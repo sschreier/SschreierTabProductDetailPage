@@ -1,0 +1,12 @@
+{
+    "sschreier": {
+        "tabproductdetailpage": {
+            "tabHeadlineFillViaSnippet": "Tab",
+            "tabHeadline": "%tabheadline%",
+            "tabContentPreviewMore": "Mehr",
+            "tabContentPreviewText": "%tabcontentpreviewtext%",
+            "tabContentFillViaSnippet": "Inhalt vom Tab",
+            "tabContent": "%tabcontent%"
+        }
+    }
+}

@@ -1,0 +1,15 @@
+{% sw_extends '@Storefront/storefront/utilities/offcanvas.html.twig' %}
+
+{% block utilities_offcanvas_content %}
+    <div class="custom-tab-pane-container tab-pane-container">
+        <div class="custom-tab-pane-text">
+            {% block page_product_detail_tabs_navigation_review_custom_tab_content %}
+                {% if config('SschreierTabProductDetailPage.config.FillTabViaSnippet') %}
+                    {{ "sschreier.tabproductdetailpage.tabContentFillViaSnippet"|trans|raw }}
+                {%  elseif config('SschreierTabProductDetailPage.config.FillTabViaSnippet') == false and customFields[customTabConentValue] %}
+                    {{ "sschreier.tabproductdetailpage.tabContent"|trans({"%tabcontent%": customFields[customTabConentValue]})|raw }}
+                {% endif %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

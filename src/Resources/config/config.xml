@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>General Settings</title>
+        <title lang="de-DE">Allgemeine Einstellungen</title>
+
+        <input-field type="bool">
+            <name>ShowTabBeforeRatingTab</name>
+            <label>show the tab before the rating tab</label>
+            <label lang="de-DE">Tab vor dem Bewertungen-Tab anzeigen</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>FillTabViaSnippet</name>
+            <label>fill the tab via a snippet</label>
+            <label lang="de-DE">Tab über einen Textbaustein befüllen</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <input-field type="int">
+            <name>TruncateTabPreviewText</name>
+            <label>mumber of characters from which the preview text in smaller resolutions should be truncated</label>
+            <label lang="de-DE">Anzahl an Zeichen, ab denen der Vorschautext in den kleineren Auflösungen gekürzt werden soll</label>
+            <defaultValue>125</defaultValue>
+            <placeholder>125</placeholder>
+        </input-field>
+    </card>
+</config>

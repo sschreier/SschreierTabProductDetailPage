@@ -1,0 +1,44 @@
+<li class="nav-item">
+    <a class="nav-link product-detail-tab-navigation-link {{ customTabLinkClass }}"
+       id="{{ tabId }}"
+       data-toggle="tab"
+       data-offcanvas-tabs="true"
+       href="{{ customTabHref }}"
+       role="tab"
+       aria-controls="{{ customTabContent }}"
+       aria-selected="true">
+        <span>
+            {% block page_product_detail_tabs_navigation_review_custom_tab_headline %}
+                {% if config('SschreierTabProductDetailPage.config.FillTabViaSnippet') %}
+                    {{ "sschreier.tabproductdetailpage.tabHeadlineFillViaSnippet"|trans }}
+                {% elseif config('SschreierTabProductDetailPage.config.FillTabViaSnippet') == false %}
+                    {% if customFields[customTabHeadlineValue] %}
+                        {{ "sschreier.tabproductdetailpage.tabHeadline"|trans({"%tabheadline%": customFields[customTabHeadlineValue]}) }}
+                    {% else %}
+                        {{ "sschreier.tabproductdetailpage.tabHeadlineFillViaSnippet"|trans }}
+                    {% endif %}
+                {% endif %}
+            {% endblock %}
+        </span>
+        <span class="product-detail-tab-navigation-icon">
+            {% sw_icon 'arrow-medium-right' style {'pack':'solid'} %}
+        </span>
+        <span class="product-detail-tab-preview">
+            {% block page_product_detail_tabs_navigation_review_custom_tab_content_preview %}
+                {% if config('SschreierTabProductDetailPage.config.FillTabViaSnippet') %}
+                    {{ "sschreier.tabproductdetailpage.tabContentFillViaSnippet"|trans|raw|striptags|u.truncate(config('SschreierTabProductDetailPage.config.TruncateTabPreviewText')) }}
+
+                    {% if "sschreier.tabproductdetailpage.tab1ContentFillviasnippet"|trans|length >= ((config('SschreierTabProductDetailPage.config.TruncateTabPreviewText')) + 1) %}
+                        <span class="product-detail-tab-preview-more">{{ "sschreier.tabproductdetailpage.tabContentPreviewMore"|trans|sw_sanitize }}</span>
+                    {% endif %}
+                {% elseif config('SschreierTabProductDetailPage.config.FillTabViaSnippet') == false and customFields[customTabConentValue] %}
+                    {{ "sschreier.tabproductdetailpage.tabContentPreviewText"|trans({"%tabcontentpreviewtext%": customFields[customTabConentValue]})|raw|striptags|sw_sanitize|u.truncate(config('SschreierTabProductDetailPage.config.TruncateTabPreviewText'), '…') }}
+
+                    {% if customFields[customTabConentValue]|length >= ((config('SschreierTabProductDetailPage.config.TruncateTabPreviewText')) + 1) %}
+                        <span class="product-detail-tab-preview-more">{{ "sschreier.tabproductdetailpage.tabContentPreviewMore"|trans|sw_sanitize }}</span>
+                    {% endif %}
+                {% endif %}
+            {% endblock %}
+        </span>
+    </a>
+</li>
