@@ -15,6 +15,7 @@ namespace Sschreier\TabProductDetailPage;
 
     class SschreierTabProductDetailPage extends Plugin
     {
+        const CUSTOM_FIELD_SET_TECHNICAL_NAME = 'sschreier_tabs_';
         const NUMBER_TABS = 1;
 
         public function install(InstallContext $installContext): void
@@ -24,13 +25,13 @@ namespace Sschreier\TabProductDetailPage;
             for ($i = 1; $i <= SschreierTabProductDetailPage::NUMBER_TABS; ++$i) {
                 $criteria = new Criteria();
 
-                $criteria->addFilter(new EqualsFilter('name', 'sschreier_tabs_' . $i));
+                $criteria->addFilter(new EqualsFilter('name', self::CUSTOM_FIELD_SET_TECHNICAL_NAME . $i));
 
                 $result = $customFieldSetRepository->searchIds($criteria, $installContext->getContext());
 
                 if (!($result->getTotal() > 0)) {
                     $customFieldSetRepository->create([[
-                        'name' => 'sschreier_tabs_' . $i,
+                        'name' => self::CUSTOM_FIELD_SET_TECHNICAL_NAME . $i,
                         'config' => [
                             'label' => [
                                 'de-DE' => 'Tab ' . $i,
@@ -40,7 +41,7 @@ namespace Sschreier\TabProductDetailPage;
                         'position' => $i,
                         'customFields' => [
                             [
-                                'name' => 'sschreier_tabs_tab' . $i . '_headline',
+                                'name' => self::CUSTOM_FIELD_SET_TECHNICAL_NAME . 'tab' . $i . '_headline',
                                 'type' => CustomFieldTypes::TEXT,
                                 'config' => [
                                     'label' => [
@@ -58,7 +59,7 @@ namespace Sschreier\TabProductDetailPage;
                                 ],
                             ],
                             [
-                                'name' => 'sschreier_tabs_tab' . $i . '_content',
+                                'name' => self::CUSTOM_FIELD_SET_TECHNICAL_NAME . 'tab' . $i . '_content',
                                 'type' => CustomFieldTypes::HTML,
                                 'config' => [
                                     'label' => [
@@ -116,7 +117,7 @@ namespace Sschreier\TabProductDetailPage;
 
             for ($i = 1; $i <= SschreierTabProductDetailPage::NUMBER_TABS; ++$i) {
                 $criteria = new Criteria();
-                $criteria->addFilter(new EqualsFilter('name', 'sschreier_tabs_' . $i));
+                $criteria->addFilter(new EqualsFilter('name', self::CUSTOM_FIELD_SET_TECHNICAL_NAME . $i));
 
                 $result = $customFieldSetRepository->searchIds($criteria, $uninstallContext->getContext());
 

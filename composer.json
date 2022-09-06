@@ -1,7 +1,7 @@
 {
     "name": "sschreier/sschreiertabproductdetailpage",
     "description": "A Tab for the product detail page",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "type": "shopware-platform-plugin",
     "license": "proprietary",
     "authors": [
@@ -11,8 +11,8 @@
         }
     ],
     "require": {
-        "shopware/core": "~6.4.1",
-        "shopware/storefront": "~6.4.1"
+        "shopware/core": "~6.4.14",
+        "shopware/storefront": "~6.4.14"
     },
     "extra": {
         "shopware-plugin-class": "Sschreier\\TabProductDetailPage\\SschreierTabProductDetailPage",

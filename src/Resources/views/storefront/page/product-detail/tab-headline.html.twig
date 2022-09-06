@@ -1,12 +1,12 @@
 <li class="nav-item">
     <a class="nav-link product-detail-tab-navigation-link {{ customTabLinkClass }}"
-       id="{{ tabId }}"
-       data-toggle="tab"
-       data-offcanvas-tabs="true"
-       href="{{ customTabHref }}"
-       role="tab"
-       aria-controls="{{ customTabContent }}"
-       aria-selected="true">
+        id="{{ customTabId }}"
+        {{ dataBsToggleAttr }}="tab"
+        data-offcanvas-tabs="true"
+        href="{{ customTabHref }}"
+        role="tab"
+        aria-controls="{{ customTabContent }}"
+        aria-selected="true">
         <span>
             {% block page_product_detail_tabs_navigation_review_custom_tab_headline %}
                 {% if config('SschreierTabProductDetailPage.config.FillTabViaSnippet') %}
