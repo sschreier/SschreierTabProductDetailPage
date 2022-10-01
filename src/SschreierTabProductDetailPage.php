@@ -16,7 +16,7 @@ namespace Sschreier\TabProductDetailPage;
     class SschreierTabProductDetailPage extends Plugin
     {
         const CUSTOM_FIELD_SET_TECHNICAL_NAME = 'sschreier_tabs_';
-        const NUMBER_TABS = 1;
+        const NUMBER_TABS = 5;
 
         public function install(InstallContext $installContext): void
         {

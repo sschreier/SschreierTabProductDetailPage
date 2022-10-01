@@ -2,10 +2,18 @@
     "sschreier": {
         "tabproductdetailpage": {
             "tabHeadlineFillViaSnippet": "Tab",
+            "tab2HeadlineFillViaSnippet": "Tab 2",
+            "tab3HeadlineFillViaSnippet": "Tab 3",
+            "tab4HeadlineFillViaSnippet": "Tab 4",
+            "tab5HeadlineFillViaSnippet": "Tab 5",
             "tabHeadline": "%tabheadline%",
             "tabContentPreviewMore": "Mehr",
             "tabContentPreviewText": "%tabcontentpreviewtext%",
             "tabContentFillViaSnippet": "Inhalt vom Tab",
+            "tab2ContentFillViaSnippet": "Inhalt vom Tab 2",
+            "tab3ContentFillViaSnippet": "Inhalt vom Tab 3",
+            "tab4ContentFillViaSnippet": "Inhalt vom Tab 4",
+            "tab5ContentFillViaSnippet": "Inhalt vom Tab 5",
             "tabContent": "%tabcontent%"
         }
     }

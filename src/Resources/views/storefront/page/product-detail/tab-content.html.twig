@@ -4,9 +4,23 @@
     <div class="custom-tab-pane-container tab-pane-container">
         <div class="custom-tab-pane-text">
             {% block page_product_detail_tabs_navigation_review_custom_tab_content %}
-                {% if config('SschreierTabProductDetailPage.config.FillTabViaSnippet') %}
-                    {{ "sschreier.tabproductdetailpage.tabContentFillViaSnippet"|trans|raw }}
-                {%  elseif config('SschreierTabProductDetailPage.config.FillTabViaSnippet') == false and customFields[customTabConentValue] %}
+                {% if fillTabViaSnippet %}
+                    {% if (numberTabs == 1) %}
+                        {{ "sschreier.tabproductdetailpage.tabContentFillViaSnippet"|trans|raw }}
+                    {% elseif (numberTabs == 2) %}
+                        {{ "sschreier.tabproductdetailpage.tab2ContentFillViaSnippet"|trans|raw }}
+                    {% elseif (numberTabs == 3) %}
+                        {{ "sschreier.tabproductdetailpage.tab3ContentFillViaSnippet"|trans|raw }}
+                    {% elseif (numberTabs == 4) %}
+                        {{ "sschreier.tabproductdetailpage.tab4ContentFillViaSnippet"|trans|raw }}
+                    {% elseif (numberTabs == 5) %}
+                        {{ "sschreier.tabproductdetailpage.tab5ContentFillViaSnippet"|trans|raw }}
+                    {% else %}
+                        {% block page_product_detail_tabs_navigation_review_custom_tab_content_default %}
+                            {{ "sschreier.tabproductdetailpage.tabContentFillViaSnippet"|trans|raw }}
+                        {% endblock %}
+                    {% endif %}
+                {%  elseif fillTabViaSnippet == false and customFields[customTabConentValue] %}
                     {{ "sschreier.tabproductdetailpage.tabContent"|trans({"%tabcontent%": customFields[customTabConentValue]})|raw }}
                 {% endif %}
             {% endblock %}

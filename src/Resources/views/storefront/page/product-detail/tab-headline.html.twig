@@ -9,13 +9,41 @@
         aria-selected="true">
         <span>
             {% block page_product_detail_tabs_navigation_review_custom_tab_headline %}
-                {% if config('SschreierTabProductDetailPage.config.FillTabViaSnippet') %}
-                    {{ "sschreier.tabproductdetailpage.tabHeadlineFillViaSnippet"|trans }}
-                {% elseif config('SschreierTabProductDetailPage.config.FillTabViaSnippet') == false %}
+                {% if fillTabViaSnippet %}
+                    {% if (numberTabs == 1) %}
+                        {{ "sschreier.tabproductdetailpage.tabHeadlineFillViaSnippet"|trans }}
+                    {% elseif (numberTabs == 2) %}
+                        {{ "sschreier.tabproductdetailpage.tab2HeadlineFillViaSnippet"|trans }}
+                    {% elseif (numberTabs == 3) %}
+                        {{ "sschreier.tabproductdetailpage.tab3HeadlineFillViaSnippet"|trans }}
+                    {% elseif (numberTabs == 4) %}
+                        {{ "sschreier.tabproductdetailpage.tab4HeadlineFillViaSnippet"|trans }}
+                    {% elseif (numberTabs == 5) %}
+                        {{ "sschreier.tabproductdetailpage.tab5HeadlineFillViaSnippet"|trans }}
+                    {% else %}
+                        {% block page_product_detail_tabs_navigation_review_custom_tab_headline_default %}
+                            {{ "sschreier.tabproductdetailpage.tabHeadlineFillViaSnippet"|trans }}
+                        {% endblock %}
+                    {% endif %}
+                {% elseif fillTabViaSnippet == false %}
                     {% if customFields[customTabHeadlineValue] %}
                         {{ "sschreier.tabproductdetailpage.tabHeadline"|trans({"%tabheadline%": customFields[customTabHeadlineValue]}) }}
                     {% else %}
-                        {{ "sschreier.tabproductdetailpage.tabHeadlineFillViaSnippet"|trans }}
+                        {% if (numberTabs == 1) %}
+                            {{ "sschreier.tabproductdetailpage.tabHeadlineFillViaSnippet"|trans }}
+                        {% elseif (numberTabs == 2) %}
+                            {{ "sschreier.tabproductdetailpage.tab2HeadlineFillViaSnippet"|trans }}
+                        {% elseif (numberTabs == 3) %}
+                            {{ "sschreier.tabproductdetailpage.tab3HeadlineFillViaSnippet"|trans }}
+                        {% elseif (numberTabs == 4) %}
+                            {{ "sschreier.tabproductdetailpage.tab4HeadlineFillViaSnippet"|trans }}
+                        {% elseif (numberTabs == 5) %}
+                            {{ "sschreier.tabproductdetailpage.tab5HeadlineFillViaSnippet"|trans }}
+                        {% else %}
+                            {% block page_product_detail_tabs_navigation_review_custom_tab_headline_customFields_default %}
+                                {{ "sschreier.tabproductdetailpage.tabHeadlineFillViaSnippet"|trans }}
+                            {% endblock %}
+                        {% endif %}
                     {% endif %}
                 {% endif %}
             {% endblock %}
@@ -25,14 +53,30 @@
         </span>
         <span class="product-detail-tab-preview">
             {% block page_product_detail_tabs_navigation_review_custom_tab_content_preview %}
-                {% if config('SschreierTabProductDetailPage.config.FillTabViaSnippet') %}
-                    {{ "sschreier.tabproductdetailpage.tabContentFillViaSnippet"|trans|raw|striptags|u.truncate(config('SschreierTabProductDetailPage.config.TruncateTabPreviewText')) }}
+                {% if fillTabViaSnippet %}
+                    {% if (numberTabs == 1) %}
+                        {% set snippetName = "sschreier.tabproductdetailpage.tabContentFillViaSnippet" %}
+                    {% elseif (numberTabs == 2) %}
+                        {% set snippetName = "sschreier.tabproductdetailpage.tab2ContentFillViaSnippet" %}
+                    {% elseif (numberTabs == 3) %}
+                        {% set snippetName = "sschreier.tabproductdetailpage.tab3ContentFillViaSnippet" %}
+                    {% elseif (numberTabs == 4) %}
+                        {% set snippetName = "sschreier.tabproductdetailpage.tab4ContentFillViaSnippet" %}
+                    {% elseif (numberTabs == 5) %}
+                        {% set snippetName = "sschreier.tabproductdetailpage.tab5ContentFillViaSnippet" %}
+                    {% else %}
+                        {% block page_product_detail_tabs_navigation_review_custom_tab_content_preview_default %}
+                            {% set snippetName = "sschreier.tabproductdetailpage.tabContentFillViaSnippet" %}
+                        {% endblock %}
+                    {% endif %}
 
-                    {% if "sschreier.tabproductdetailpage.tab1ContentFillviasnippet"|trans|length >= ((config('SschreierTabProductDetailPage.config.TruncateTabPreviewText')) + 1) %}
+                    {{ snippetName|trans|raw|striptags|u.truncate(config('SschreierTabProductDetailPage.config.TruncateTabPreviewText'), '...') }}
+
+                    {% if snippetName|trans|length >= ((config('SschreierTabProductDetailPage.config.TruncateTabPreviewText')) + 1) %}
                         <span class="product-detail-tab-preview-more">{{ "sschreier.tabproductdetailpage.tabContentPreviewMore"|trans|sw_sanitize }}</span>
                     {% endif %}
-                {% elseif config('SschreierTabProductDetailPage.config.FillTabViaSnippet') == false and customFields[customTabConentValue] %}
-                    {{ "sschreier.tabproductdetailpage.tabContentPreviewText"|trans({"%tabcontentpreviewtext%": customFields[customTabConentValue]})|raw|striptags|sw_sanitize|u.truncate(config('SschreierTabProductDetailPage.config.TruncateTabPreviewText'), '…') }}
+                {% elseif fillTabViaSnippet == false and customFields[customTabConentValue] %}
+                    {{ "sschreier.tabproductdetailpage.tabContentPreviewText"|trans({"%tabcontentpreviewtext%": customFields[customTabConentValue]})|raw|striptags|sw_sanitize|u.truncate(config('SschreierTabProductDetailPage.config.TruncateTabPreviewText'), '...') }}
 
                     {% if customFields[customTabConentValue]|length >= ((config('SschreierTabProductDetailPage.config.TruncateTabPreviewText')) + 1) %}
                         <span class="product-detail-tab-preview-more">{{ "sschreier.tabproductdetailpage.tabContentPreviewMore"|trans|sw_sanitize }}</span>

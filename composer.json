@@ -1,7 +1,7 @@
 {
     "name": "sschreier/sschreiertabproductdetailpage",
-    "description": "A Tab for the product detail page",
-    "version": "1.0.1",
+    "description": "Tabs for the product detail page",
+    "version": "1.0.2",
     "type": "shopware-platform-plugin",
     "license": "proprietary",
     "authors": [
@@ -19,12 +19,12 @@
         "plugin-icon": "src/Resources/config/plugin.png",
         "copyright": "Sebastian Schreier",
         "label": {
-            "de-DE": "Ein Tab für die Produkt - Detailseite",
-            "en-GB": "A Tab for the product detail page"
+            "de-DE": "Tabs für die Produkt - Detailseite",
+            "en-GB": "Tabs for the product detail page"
         },
         "description": {
-            "de-DE": "Die Erweiterung ermöglicht ein Tab für die Produkt - Detailseite, der sowohl vor als auch nach dem Bewertungen-Tab angezeigt werden kann. Der Inhalt des Tabs stammt entweder aus dem Rich Text Editor am Produkt oder aus einem Textbaustein. Der Tab wird ebenso beim Zuweisen eines Produktseiten-Layouts angezeigt.",
-            "en-GB": "The extension provide a tab for the product detail page, which can be displayed before and after the reviews tab. The content of the tab comes either from the rich text editor at the product or from a snippet. The tab is also displayed when assigning a product page layout."
+            "de-DE": "Die Erweiterung ermöglicht Tabs für die Produkt - Detailseite, die entweder vor oder nach dem Bewertungen-Tab angezeigt werden können. Der Inhalt der Tabs stammen entweder aus dem Rich Text Editor am Produkt oder aus einem Textbaustein. Die Tabs werden ebenso beim Zuweisen eines Produktseiten-Layouts angezeigt.",
+            "en-GB": "The extension provide tabs for the product detail page, which can be displayed before or after the reviews tab. The content of the tabs comes either from the rich text editor at the product or from a snippet. The tabs are also displayed when assigning a product page layout."
         },
         "manufacturerLink": {
             "de-DE": "https://www.sebastianschreier.de",

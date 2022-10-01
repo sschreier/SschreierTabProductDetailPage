@@ -6,24 +6,167 @@
 
         <input-field type="bool">
             <name>ShowTabBeforeRatingTab</name>
-            <label>show the tab before the rating tab</label>
-            <label lang="de-DE">Tab vor dem Bewertungen-Tab anzeigen</label>
+            <label>show the tabs before the rating tab</label>
+            <label lang="de-DE">Tabs vor dem Bewertungen-Tab anzeigen</label>
             <defaultValue>true</defaultValue>
-        </input-field>
-
-        <input-field type="bool">
-            <name>FillTabViaSnippet</name>
-            <label>fill the tab via a snippet</label>
-            <label lang="de-DE">Tab über einen Textbaustein befüllen</label>
-            <defaultValue>false</defaultValue>
         </input-field>
 
         <input-field type="int">
             <name>TruncateTabPreviewText</name>
-            <label>mumber of characters from which the preview text in smaller resolutions should be truncated</label>
+            <label>number of characters from which the preview text in smaller resolutions should be truncated</label>
             <label lang="de-DE">Anzahl an Zeichen, ab denen der Vorschautext in den kleineren Auflösungen gekürzt werden soll</label>
             <defaultValue>125</defaultValue>
             <placeholder>125</placeholder>
         </input-field>
+    </card>
+
+    <card>
+        <title>Tab 1</title>
+        <title lang="de-DE">Tab 1</title>
+
+        <input-field type="bool">
+            <name>FillTabViaSnippet</name>
+            <label>fill via a snippet</label>
+            <label lang="de-DE">über einen Textbaustein befüllen</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <component name="sw-snippet-field">
+            <name>FillTabHeadlineViaSnippet</name>
+            <label>headline from the snippet</label>
+            <label lang="de-DE">Überschrift aus dem Textbaustein</label>
+            <snippet>sschreier.tabproductdetailpage.tabHeadlineFillViaSnippet</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+
+        <component name="sw-snippet-field">
+            <name>FillTabContentViaSnippet</name>
+            <label>content from the snippet</label>
+            <label lang="de-DE">Inhalt aus dem Textbaustein</label>
+            <snippet>sschreier.tabproductdetailpage.tabContentFillViaSnippet</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+    </card>
+
+    <card>
+        <title>Tab 2</title>
+        <title lang="de-DE">Tab 2</title>
+
+        <input-field type="bool">
+            <name>FillTab2ViaSnippet</name>
+            <label>fill via a snippet</label>
+            <label lang="de-DE">über einen Textbaustein befüllen</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <component name="sw-snippet-field">
+            <name>FillTab2HeadlineViaSnippet</name>
+            <label>headline from the snippet</label>
+            <label lang="de-DE">Überschrift aus dem Textbaustein</label>
+            <snippet>sschreier.tabproductdetailpage.tab2HeadlineFillViaSnippet</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+
+        <component name="sw-snippet-field">
+            <name>FillTab2ContentViaSnippet</name>
+            <label>content from the snippet</label>
+            <label lang="de-DE">Inhalt aus dem Textbaustein</label>
+            <snippet>sschreier.tabproductdetailpage.tab2ContentFillViaSnippet</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+    </card>
+
+    <card>
+        <title>Tab 3</title>
+        <title lang="de-DE">Tab 3</title>
+
+        <input-field type="bool">
+            <name>FillTab3ViaSnippet</name>
+            <label>fill via a snippet</label>
+            <label lang="de-DE">über einen Textbaustein befüllen</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <component name="sw-snippet-field">
+            <name>FillTab3HeadlineViaSnippet</name>
+            <label>headline from the snippet</label>
+            <label lang="de-DE">Überschrift aus dem Textbaustein</label>
+            <snippet>sschreier.tabproductdetailpage.tab3HeadlineFillViaSnippet</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+
+        <component name="sw-snippet-field">
+            <name>FillTab3ContentViaSnippet</name>
+            <label>content from the snippet</label>
+            <label lang="de-DE">Inhalt aus dem Textbaustein</label>
+            <snippet>sschreier.tabproductdetailpage.tab3ContentFillViaSnippet</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+    </card>
+
+    <card>
+        <title>Tab 4</title>
+        <title lang="de-DE">Tab 4</title>
+
+        <input-field type="bool">
+            <name>FillTab4ViaSnippet</name>
+            <label>fill via a snippet</label>
+            <label lang="de-DE">über einen Textbaustein befüllen</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <component name="sw-snippet-field">
+            <name>FillTab4HeadlineViaSnippet</name>
+            <label>headline from the snippet</label>
+            <label lang="de-DE">Überschrift aus dem Textbaustein</label>
+            <snippet>sschreier.tabproductdetailpage.tab4HeadlineFillViaSnippet</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+
+        <component name="sw-snippet-field">
+            <name>FillTab4ContentViaSnippet</name>
+            <label>content from the snippet</label>
+            <label lang="de-DE">Inhalt aus dem Textbaustein</label>
+            <snippet>sschreier.tabproductdetailpage.tab4ContentFillViaSnippet</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+    </card>
+
+    <card>
+        <title>Tab 5</title>
+        <title lang="de-DE">Tab 5</title>
+
+        <input-field type="bool">
+            <name>FillTab5ViaSnippet</name>
+            <label>fill via a snippet</label>
+            <label lang="de-DE">über einen Textbaustein befüllen</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <component name="sw-snippet-field">
+            <name>FillTab5HeadlineViaSnippet</name>
+            <label>headline from the snippet</label>
+            <label lang="de-DE">Überschrift aus dem Textbaustein</label>
+            <snippet>sschreier.tabproductdetailpage.tab5HeadlineFillViaSnippet</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
+
+        <component name="sw-snippet-field">
+            <name>FillTab5ContentViaSnippet</name>
+            <label>content from the snippet</label>
+            <label lang="de-DE">Inhalt aus dem Textbaustein</label>
+            <snippet>sschreier.tabproductdetailpage.tab5ContentFillViaSnippet</snippet>
+            <helpText>click on the globe to edit the translations</helpText>
+            <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
+        </component>
     </card>
 </config>
