@@ -1,6 +1,6 @@
 {% sw_extends '@Storefront/storefront/element/cms-element-product-description-reviews.html.twig' %}
 
-{% block element_product_desciption_reviews_tabs_navigation_review %}
+{% block element_product_description_reviews_tabs_navigation_review %}
     {% set product = element.data.product %}
     {% set extension = product.extensions %}
     {% set customFields = product.translated.customFields %}
@@ -18,7 +18,7 @@
         {% set customTabContent = 'custom-tab' ~ numberTabs ~ '-' ~ product.id ~ '-pane' %}
         {% set customTabLinkClass = 'product-detail-custom-tab' ~ numberTabs ~ '-' ~ product.id  %}
 
-        {% block element_product_desciption_reviews_tabs_navigation_review_inner %}
+        {% block element_product_description_reviews_tabs_navigation_review_inner %}
             {% set showTab = false %}
 
             {% if (numberTabs == 1) %}
@@ -32,7 +32,7 @@
             {% elseif (numberTabs == 5) %}
                 {% set fillTabViaSnippet = config('SschreierTabProductDetailPage.config.FillTab5ViaSnippet') %}
             {% else %}
-                {% block element_product_desciption_reviews_tabs_navigation_review_inner_default %}
+                {% block element_product_description_reviews_tabs_navigation_review_inner_default %}
                     {% set fillTabViaSnippet = config('SschreierTabProductDetailPage.config.FillTabViaSnippet') %}
                 {% endblock %}
             {% endif %}
@@ -55,7 +55,7 @@
     {% endif %}
 {% endblock %}
 
-{% block element_product_desciption_reviews_tabs_content_review %}
+{% block element_product_description_reviews_tabs_content_review %}
     {% set product = element.data.product %}
     {% set extension = product.extensions %}
     {% set customFields = product.translated.customFields %}
@@ -70,7 +70,7 @@
         {% set customTabId = 'custom-tab' ~ numberTabs ~ '-' ~ product.id  %}
         {% set customTabContent = 'custom-tab' ~ numberTabs ~ '-' ~ product.id ~ '-pane' %}
 
-        {% block element_product_desciption_reviews_tabs_content_review_inner %}
+        {% block element_product_description_reviews_tabs_content_review_inner %}
             {% set showTab = false %}
 
             {% if (numberTabs == 1) %}
@@ -84,7 +84,7 @@
             {% elseif (numberTabs == 5) %}
                 {% set fillTabViaSnippet = config('SschreierTabProductDetailPage.config.FillTab5ViaSnippet') %}
             {% else %}
-                {% block element_product_desciption_reviews_tabs_content_review_inner_default %}
+                {% block element_product_description_reviews_tabs_content_review_inner_default %}
                     {% set fillTabViaSnippet = config('SschreierTabProductDetailPage.config.FillTabViaSnippet') %}
                 {% endblock %}
             {% endif %}
