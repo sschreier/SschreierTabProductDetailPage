@@ -4,7 +4,7 @@
     {% set product = element.data.product %}
     {% set extension = product.extensions %}
     {% set customFields = product.translated.customFields %}
-    {% set numberTabsValue = extension['numberTabsValue'].value %}
+    {% set numberTabsValue = page.product.extensions['numberTabsValue'].value %}
 
     {% if not(config('SschreierTabProductDetailPage.config.ShowTabBeforeRatingTab')) %}
         {{ parent() }}
@@ -59,7 +59,7 @@
     {% set product = element.data.product %}
     {% set extension = product.extensions %}
     {% set customFields = product.translated.customFields %}
-    {% set numberTabsValue = extension['numberTabsValue'].value %}
+    {% set numberTabsValue = page.product.extensions['numberTabsValue'].value %}
 
     {% if not(config('SschreierTabProductDetailPage.config.ShowTabBeforeRatingTab')) %}
         {{ parent() }}

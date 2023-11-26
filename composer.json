@@ -1,7 +1,7 @@
 {
     "name": "sschreier/sschreiertabproductdetailpage",
     "description": "Tabs for the product detail page",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "type": "shopware-platform-plugin",
     "license": "proprietary",
     "authors": [
