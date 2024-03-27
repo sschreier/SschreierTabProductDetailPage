@@ -42,7 +42,7 @@
             {% endif %}
 
             {% if showTab %}
-                {% sw_include '@SschreierTabProductDetailPage/storefront/page/product-detail/tab-headline.html.twig' with {
+                {% sw_include '@SschreierTabProductDetailPage/storefront/element/tab-headline.html.twig' with {
                     fillTabViaSnippet: fillTabViaSnippet,
                     numberTabs: numberTabs
                 } %}
@@ -98,7 +98,7 @@
                      id="{{ customTabContent }}"
                      role="tabpanel"
                      aria-labelledby="{{ customTabId }}">
-                    {% sw_include '@SschreierTabProductDetailPage/storefront/page/product-detail/tab-content.html.twig' with {
+                    {% sw_include '@SschreierTabProductDetailPage/storefront/element/tab-content.html.twig' with {
                         fillTabViaSnippet: fillTabViaSnippet,
                         numberTabs: numberTabs
                     } %}
