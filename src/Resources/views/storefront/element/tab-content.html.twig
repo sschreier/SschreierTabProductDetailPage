@@ -6,22 +6,64 @@
             {% block page_product_detail_tabs_navigation_review_custom_tab_content %}
                 {% if fillTabViaSnippet %}
                     {% if (numberTabs == 1) %}
-                        {{ "sschreier.tabproductdetailpage.tabContentFillViaSnippet"|trans|raw }}
+                        {% set tab1Content = "sschreier.tabproductdetailpage.tabContentFillViaSnippet"|trans|raw %}
+
+                        {% if useTwigInTabContent %}
+                            {% include(template_from_string(tab1Content)) %} 
+                        {% else %}
+                            {{ tab1Content }}
+                        {% endif %}
                     {% elseif (numberTabs == 2) %}
-                        {{ "sschreier.tabproductdetailpage.tab2ContentFillViaSnippet"|trans|raw }}
+                        {% set tab2Content = "sschreier.tabproductdetailpage.tab2ContentFillViaSnippet"|trans|raw %}
+
+                        {% if useTwigInTabContent %}
+                            {% include(template_from_string(tab2Content)) %} 
+                        {% else %}
+                            {{ tab2Content }}
+                        {% endif %}
                     {% elseif (numberTabs == 3) %}
-                        {{ "sschreier.tabproductdetailpage.tab3ContentFillViaSnippet"|trans|raw }}
+                        {% set tab3Content = "sschreier.tabproductdetailpage.tab3ContentFillViaSnippet"|trans|raw %}
+                        
+                        {% if useTwigInTabContent %}
+                            {% include(template_from_string(tab3Content)) %} 
+                        {% else %}
+                            {{ tab3Content }}
+                        {% endif %}
                     {% elseif (numberTabs == 4) %}
-                        {{ "sschreier.tabproductdetailpage.tab4ContentFillViaSnippet"|trans|raw }}
+                        {% set tab4Content = "sschreier.tabproductdetailpage.tab4ContentFillViaSnippet"|trans|raw %}
+                        
+                        {% if useTwigInTabContent %}
+                            {% include(template_from_string(tab4Content)) %} 
+                        {% else %}
+                            {{ tab4Content }}
+                        {% endif %}
                     {% elseif (numberTabs == 5) %}
-                        {{ "sschreier.tabproductdetailpage.tab5ContentFillViaSnippet"|trans|raw }}
+                        {% set tab5Content = "sschreier.tabproductdetailpage.tab5ContentFillViaSnippet"|trans|raw %}
+
+                        {% if useTwigInTabContent %}
+                            {% include(template_from_string(tab5Content)) %} 
+                        {% else %}
+                            {{ tab5Content }}
+                        {% endif %}
                     {% else %}
                         {% block page_product_detail_tabs_navigation_review_custom_tab_content_default %}
-                            {{ "sschreier.tabproductdetailpage.tabContentFillViaSnippet"|trans|raw }}
+                            {% set tab1Content = "sschreier.tabproductdetailpage.tabContentFillViaSnippet"|trans|raw %}
+
+                            {% if useTwigInTabContent %}
+                                {% include(template_from_string(tab1Content)) %} 
+                            {% else %}
+                                {{ tab1Content }}
+                            {% endif %}
                         {% endblock %}
                     {% endif %}
-                {%  elseif fillTabViaSnippet == false and customFields[customTabConentValue] %}
-                    {{ "sschreier.tabproductdetailpage.tabContent"|trans({"%tabcontent%": customFields[customTabConentValue]})|raw }}
+                {%  elseif fillTabViaSnippet == false and customFields[customTabContentValue] %}
+                    {% set tabContent = customFields[customTabContentValue] %}
+
+                    {% if useTwigInTabContent %}
+                        {% set tabContent = include(template_from_string(tabContent)) %}
+                    {% endif %}
+
+                    {{ "sschreier.tabproductdetailpage.tabContent"|trans({"%tabcontent%": tabContent})|raw }}
                 {% endif %}
             {% endblock %}
         </div>

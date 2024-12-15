@@ -40,6 +40,13 @@
             <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
         </component>
 
+        <input-field type="bool">
+            <name>UseTwigInTabHeadline</name>
+            <label>use twig compiling for the headline</label>
+            <label lang="de-DE">Twig-Kompilierung bei der Überschrift nutzen</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
         <component name="sw-snippet-field">
             <name>FillTabContentViaSnippet</name>
             <label>content from the snippet</label>
@@ -48,6 +55,13 @@
             <helpText>click on the globe to edit the translations</helpText>
             <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
         </component>
+
+        <input-field type="bool">
+            <name>UseTwigInTabContent</name>
+            <label>use twig compiling for the content</label>
+            <label lang="de-DE">Twig-Kompilierung beim Inhalt nutzen</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
     </card>
 
     <card>
@@ -70,6 +84,13 @@
             <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
         </component>
 
+        <input-field type="bool">
+            <name>UseTwigInTab2Headline</name>
+            <label>use twig compiling for the headline</label>
+            <label lang="de-DE">Twig-Kompilierung bei der Überschrift nutzen</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
         <component name="sw-snippet-field">
             <name>FillTab2ContentViaSnippet</name>
             <label>content from the snippet</label>
@@ -78,6 +99,13 @@
             <helpText>click on the globe to edit the translations</helpText>
             <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
         </component>
+
+        <input-field type="bool">
+            <name>UseTwigInTab2Content</name>
+            <label>use twig compiling for the content</label>
+            <label lang="de-DE">Twig-Kompilierung beim Inhalt nutzen</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
     </card>
 
     <card>
@@ -100,6 +128,13 @@
             <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
         </component>
 
+        <input-field type="bool">
+            <name>UseTwigInTab3Headline</name>
+            <label>use twig compiling for the headline</label>
+            <label lang="de-DE">Twig-Kompilierung bei der Überschrift nutzen</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
         <component name="sw-snippet-field">
             <name>FillTab3ContentViaSnippet</name>
             <label>content from the snippet</label>
@@ -108,6 +143,13 @@
             <helpText>click on the globe to edit the translations</helpText>
             <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
         </component>
+
+        <input-field type="bool">
+            <name>UseTwigInTab3Content</name>
+            <label>use twig compiling for the content</label>
+            <label lang="de-DE">Twig-Kompilierung beim Inhalt nutzen</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
     </card>
 
     <card>
@@ -130,6 +172,13 @@
             <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
         </component>
 
+        <input-field type="bool">
+            <name>UseTwigInTab4Headline</name>
+            <label>use twig compiling for the headline</label>
+            <label lang="de-DE">Twig-Kompilierung bei der Überschrift nutzen</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
         <component name="sw-snippet-field">
             <name>FillTab4ContentViaSnippet</name>
             <label>content from the snippet</label>
@@ -138,6 +187,13 @@
             <helpText>click on the globe to edit the translations</helpText>
             <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
         </component>
+
+         <input-field type="bool">
+            <name>UseTwigInTab4Content</name>
+            <label>use twig compiling for the content</label>
+            <label lang="de-DE">Twig-Kompilierung beim Inhalt nutzen</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
     </card>
 
     <card>
@@ -160,6 +216,13 @@
             <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
         </component>
 
+        <input-field type="bool">
+            <name>UseTwigInTab5Headline</name>
+            <label>use twig compiling for the headline</label>
+            <label lang="de-DE">Twig-Kompilierung bei der Überschrift nutzen</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
         <component name="sw-snippet-field">
             <name>FillTab5ContentViaSnippet</name>
             <label>content from the snippet</label>
@@ -168,5 +231,12 @@
             <helpText>click on the globe to edit the translations</helpText>
             <helpText lang="de-DE">Klicke auf den Globus, um die Übersetzung zu bearbeiten</helpText>
         </component>
+
+        <input-field type="bool">
+            <name>UseTwigInTab5Content</name>
+            <label>use twig compiling for the content</label>
+            <label lang="de-DE">Twig-Kompilierung beim Inhalt nutzen</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
     </card>
 </config>

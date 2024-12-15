@@ -7,19 +7,29 @@ A extension for _tabs for the product detail page_, which can be _displayed befo
  - set the number of characters from which the preview text in smaller resolutions should be truncated
  - select, if tab 1 should be filled via a snippet
  - set the headline of tab 1 via snippet
+ - select, if the headline of tab 1 use twig compiling
  - set the content of tab 1 via snippet
+ - select, if the content of tab 1 use twig compiling
  - select, if tab 2 should be filled via a snippet
  - set the headline of tab 2 via snippet
+ - select, if the headline of tab 2 use twig compiling
  - set the content of tab 2 via snippet
+ - select, if the content of tab 2 use twig compiling
  - select, if tab 3 should be filled via a snippet
  - set the headline of tab 3 via snippet
+ - select, if the headline of tab 3 use twig compiling
  - set the content of tab 3 via snippet
+ - select, if the content of tab 3 use twig compiling
  - select, if tab 4 should be filled via a snippet
  - set the headline of tab 4 via snippet
+ - select, if the headline of tab 4 use twig compiling
  - set the content of tab 4 via snippet
+ - select, if the content of tab 4 use twig compiling
  - select, if tab 5 should be filled via a snippet
  - set the headline of tab 5 via snippet
+ - select, if the headline of tab 5 use twig compiling
  - set the content of tab 5 via snippet
+ - select, if the content of tab 5 use twig compiling
 
 ## Available snippets
  - tabHeadlineFillViaSnippet
@@ -36,6 +46,23 @@ A extension for _tabs for the product detail page_, which can be _displayed befo
  - tab4ContentFillViaSnippet
  - tab5ContentFillViaSnippet
  - tabContent
+
+## How to create a manufacturer tab or something similar
+1. Switch to the extension configuration
+2. Activate the switch _fill via a snippet_
+3. Activate the switch _use twig compiling for the headline_
+4. Insert the following content into the field _headline from the snippet_:
+
+```
+{{ page.product.manufacturer.translated.name }}
+```
+
+5. Activate the switch _use twig compiling for the content_
+6. Insert the following content into the field _content from the snippet_:
+
+```
+{{ page.product.manufacturer.translated.description }}
+```
 
 ## How to install the extension
 ### via console (recommended)

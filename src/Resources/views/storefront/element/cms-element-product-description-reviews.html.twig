@@ -1,6 +1,8 @@
 {% sw_extends '@Storefront/storefront/element/cms-element-product-description-reviews.html.twig' %}
 
 {% block element_product_description_reviews_tabs_navigation_review %}
+    {% block element_product_description_reviews_tabs_navigation_review_before %}{% endblock %}
+
     {% set product = element.data.product %}
     {% set extension = product.extensions %}
     {% set customFields = product.translated.customFields %}
@@ -12,7 +14,7 @@
 
     {% for numberTabs in 1..numberTabsValue %}
         {% set customTabHeadlineValue = 'sschreier_tabs_tab' ~ numberTabs ~ '_headline' %}
-        {% set customTabConentValue = 'sschreier_tabs_tab' ~ numberTabs ~ '_content' %}
+        {% set customTabContentValue = 'sschreier_tabs_tab' ~ numberTabs ~ '_content' %}
         {% set customTabId = 'custom-tab' ~ numberTabs ~ '-' ~ product.id  %}
         {% set customTabHref = '#custom-tab' ~ numberTabs ~ '-' ~ product.id ~ '-pane' %}
         {% set customTabContent = 'custom-tab' ~ numberTabs ~ '-' ~ product.id ~ '-pane' %}
@@ -23,27 +25,41 @@
 
             {% if (numberTabs == 1) %}
                 {% set fillTabViaSnippet = config('SschreierTabProductDetailPage.config.FillTabViaSnippet') %}
+                {% set useTwigInTabHeadline = config('SschreierTabProductDetailPage.config.UseTwigInTabHeadline') %}
+                {% set useTwigInTabContent = config('SschreierTabProductDetailPage.config.UseTwigInTabContent') %}
             {% elseif (numberTabs == 2) %}
                 {% set fillTabViaSnippet = config('SschreierTabProductDetailPage.config.FillTab2ViaSnippet') %}
+                {% set useTwigInTabHeadline = config('SschreierTabProductDetailPage.config.UseTwigInTab2Headline') %}
+                {% set useTwigInTabContent = config('SschreierTabProductDetailPage.config.UseTwigInTab2Content') %}
             {% elseif (numberTabs == 3) %}
                 {% set fillTabViaSnippet = config('SschreierTabProductDetailPage.config.FillTab3ViaSnippet') %}
+                {% set useTwigInTabHeadline = config('SschreierTabProductDetailPage.config.UseTwigInTab3Headline') %}
+                {% set useTwigInTabContent = config('SschreierTabProductDetailPage.config.UseTwigInTab3Content') %}
             {% elseif (numberTabs == 4) %}
                 {% set fillTabViaSnippet = config('SschreierTabProductDetailPage.config.FillTab4ViaSnippet') %}
+                {% set useTwigInTabHeadline = config('SschreierTabProductDetailPage.config.UseTwigInTab4Headline') %}
+                {% set useTwigInTabContent = config('SschreierTabProductDetailPage.config.UseTwigInTab4Content') %}
             {% elseif (numberTabs == 5) %}
                 {% set fillTabViaSnippet = config('SschreierTabProductDetailPage.config.FillTab5ViaSnippet') %}
+                {% set useTwigInTabHeadline = config('SschreierTabProductDetailPage.config.UseTwigInTab5Headline') %}
+                {% set useTwigInTabContent = config('SschreierTabProductDetailPage.config.UseTwigInTab5Content') %}
             {% else %}
                 {% block element_product_description_reviews_tabs_navigation_review_inner_default %}
                     {% set fillTabViaSnippet = config('SschreierTabProductDetailPage.config.FillTabViaSnippet') %}
+                    {% set useTwigInTabHeadline = config('SschreierTabProductDetailPage.config.UseTwigInTabHeadline') %}
+                    {% set useTwigInTabContent = config('SschreierTabProductDetailPage.config.UseTwigInTabContent') %}
                 {% endblock %}
             {% endif %}
 
-            {% if fillTabViaSnippet or (fillTabViaSnippet == false and customFields[customTabConentValue]) %}
+            {% if fillTabViaSnippet or (fillTabViaSnippet == false and customFields[customTabContentValue]) %}
                 {% set showTab = true %}
             {% endif %}
 
             {% if showTab %}
                 {% sw_include '@SschreierTabProductDetailPage/storefront/element/tab-headline.html.twig' with {
                     fillTabViaSnippet: fillTabViaSnippet,
+                    useTwigInTabHeadline: useTwigInTabHeadline,
+                    useTwigInTabContent: useTwigInTabContent,
                     numberTabs: numberTabs
                 } %}
             {% endif %}
@@ -53,9 +69,13 @@
     {% if config('SschreierTabProductDetailPage.config.ShowTabBeforeRatingTab') %}
         {{ parent() }}
     {% endif %}
+
+    {% block element_product_description_reviews_tabs_navigation_review_after %}{% endblock %}
 {% endblock %}
 
 {% block element_product_description_reviews_tabs_content_review %}
+    {% block element_product_description_reviews_tabs_content_review_before %}{% endblock %}
+
     {% set product = element.data.product %}
     {% set extension = product.extensions %}
     {% set customFields = product.translated.customFields %}
@@ -66,7 +86,7 @@
     {% endif %}
 
     {% for numberTabs in 1..numberTabsValue %}
-        {% set customTabConentValue = 'sschreier_tabs_tab' ~ numberTabs ~ '_content' %}
+        {% set customTabContentValue = 'sschreier_tabs_tab' ~ numberTabs ~ '_content' %}
         {% set customTabId = 'custom-tab' ~ numberTabs ~ '-' ~ product.id  %}
         {% set customTabContent = 'custom-tab' ~ numberTabs ~ '-' ~ product.id ~ '-pane' %}
 
@@ -75,21 +95,27 @@
 
             {% if (numberTabs == 1) %}
                 {% set fillTabViaSnippet = config('SschreierTabProductDetailPage.config.FillTabViaSnippet') %}
+                {% set useTwigInTabContent = config('SschreierTabProductDetailPage.config.UseTwigInTabContent') %}
             {% elseif (numberTabs == 2) %}
                 {% set fillTabViaSnippet = config('SschreierTabProductDetailPage.config.FillTab2ViaSnippet') %}
+                {% set useTwigInTabContent = config('SschreierTabProductDetailPage.config.UseTwigInTab2Content') %}
             {% elseif (numberTabs == 3) %}
                 {% set fillTabViaSnippet = config('SschreierTabProductDetailPage.config.FillTab3ViaSnippet') %}
+                {% set useTwigInTabContent = config('SschreierTabProductDetailPage.config.UseTwigInTab3Content') %}
             {% elseif (numberTabs == 4) %}
                 {% set fillTabViaSnippet = config('SschreierTabProductDetailPage.config.FillTab4ViaSnippet') %}
+                {% set useTwigInTabContent = config('SschreierTabProductDetailPage.config.UseTwigInTab4Content') %}
             {% elseif (numberTabs == 5) %}
                 {% set fillTabViaSnippet = config('SschreierTabProductDetailPage.config.FillTab5ViaSnippet') %}
+                {% set useTwigInTabContent = config('SschreierTabProductDetailPage.config.UseTwigInTab5Content') %}
             {% else %}
                 {% block element_product_description_reviews_tabs_content_review_inner_default %}
                     {% set fillTabViaSnippet = config('SschreierTabProductDetailPage.config.FillTabViaSnippet') %}
+                    {% set useTwigInTabContent = config('SschreierTabProductDetailPage.config.UseTwigInTabContent') %}
                 {% endblock %}
             {% endif %}
 
-            {% if fillTabViaSnippet or (fillTabViaSnippet == false and customFields[customTabConentValue]) %}
+            {% if fillTabViaSnippet or (fillTabViaSnippet == false and customFields[customTabContentValue]) %}
                 {% set showTab = true %}
             {% endif %}
 
@@ -100,6 +126,7 @@
                      aria-labelledby="{{ customTabId }}">
                     {% sw_include '@SschreierTabProductDetailPage/storefront/element/tab-content.html.twig' with {
                         fillTabViaSnippet: fillTabViaSnippet,
+                        useTwigInTabContent: useTwigInTabContent,
                         numberTabs: numberTabs
                     } %}
                 </div>
@@ -110,4 +137,6 @@
     {% if config('SschreierTabProductDetailPage.config.ShowTabBeforeRatingTab') %}
         {{ parent() }}
     {% endif %}
+
+    {% block element_product_description_reviews_tabs_content_review_after %}{% endblock %}
 {% endblock %}
