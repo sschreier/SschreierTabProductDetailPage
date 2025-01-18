@@ -1,9 +1,9 @@
 {
     "name": "sschreier/sschreiertabproductdetailpage",
     "description": "Tabs for the product detail page",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "type": "shopware-platform-plugin",
-    "license": "proprietary",
+    "license": "GPL-3.0-or-later",
     "authors": [
         {
             "name": "Sebastian Schreier",
