@@ -1,7 +1,7 @@
 {
     "name": "sschreier/sschreiertabproductdetailpage",
-    "description": "Tabs for the product detail page",
-    "version": "1.2.3",
+    "description": "tabs for the product detail page",
+    "version": "1.2.4",
     "type": "shopware-platform-plugin",
     "license": "GPL-3.0-or-later",
     "authors": [
@@ -20,7 +20,7 @@
         "copyright": "Sebastian Schreier",
         "label": {
             "de-DE": "Tabs für die Produkt - Detailseite",
-            "en-GB": "Tabs for the product detail page"
+            "en-GB": "tabs for the product detail page"
         },
         "description": {
             "de-DE": "Die Erweiterung ermöglicht Tabs für die Produkt - Detailseite, die entweder vor oder nach dem Bewertungen-Tab angezeigt werden können. Der Inhalt der Tabs stammen entweder aus dem Rich Text Editor am Produkt oder aus einem Textbaustein. Die Tabs werden ebenso beim Zuweisen eines Produktseiten-Layouts angezeigt.",
