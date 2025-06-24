@@ -52,14 +52,16 @@ final class Migration1693936500CustomFieldProductTabs extends MigrationStep
     {
         $customFieldSetId = Uuid::randomBytes();
 
-        $customFieldSetStmt = $connection->prepare(self::getCustomFieldSetSql());
-        $customFieldSetStmt->executeStatement([
-            'id' => $customFieldSetId,
-            'name' => self::CUSTOM_FIELD_SET_TECHNICAL_NAME . $number,
-            'position' => $number,
-            'config' => '{"label": {"de-DE": "Tab ' . $number .'", "en-GB": "tab ' . $number .'"}}',
-            'created_at' => self::getDateTimeValue(),
-        ]);
+        $connection->executeStatement(
+            self::getCustomFieldSetSql(),
+            [
+                'id' => $customFieldSetId,
+                'name' => self::CUSTOM_FIELD_SET_TECHNICAL_NAME . $number,
+                'config' => '{"label": {"de-DE": "Tab ' . $number .'", "en-GB": "tab ' . $number .'"}, "translated": true}',
+                'position' => $number,
+                'created_at' => self::getDateTimeValue(),
+            ]
+        );
 
         return $customFieldSetId;
     }
@@ -68,8 +70,8 @@ final class Migration1693936500CustomFieldProductTabs extends MigrationStep
     {
         $customFieldId = Uuid::randomBytes();
 
-        $customFieldHeadlineStmt = $connection->prepare(self::getCustomFieldSql());
-        $customFieldHeadlineStmt->executeStatement(
+        $connection->executeStatement(
+            self::getCustomFieldSql(),
             [
                 'id' => $customFieldId,
                 'name' => self::CUSTOM_FIELD_SET_TECHNICAL_NAME . 'tab' . $number . '_headline',
@@ -82,8 +84,8 @@ final class Migration1693936500CustomFieldProductTabs extends MigrationStep
 
         $customFieldId = Uuid::randomBytes();
 
-        $customFieldContentStmt = $connection->prepare(self::getCustomFieldSql());
-        $customFieldContentStmt->executeStatement(
+        $connection->executeStatement(
+            self::getCustomFieldSql(),
             [
                 'id' => $customFieldId,
                 'name' => self::CUSTOM_FIELD_SET_TECHNICAL_NAME . 'tab' . $number . '_content',
@@ -99,8 +101,8 @@ final class Migration1693936500CustomFieldProductTabs extends MigrationStep
     {
         $customFieldRelationId = Uuid::randomBytes();
 
-        $customFieldRelationStmt = $connection->prepare(self::getCustomFieldRelationSql());
-        $customFieldRelationStmt->executeStatement(
+        $connection->executeStatement(
+            self::getCustomFieldRelationSql(),
             [
                 'id' => $customFieldRelationId,
                 'set_id' => $customFieldSetId,
@@ -112,15 +114,15 @@ final class Migration1693936500CustomFieldProductTabs extends MigrationStep
 
     protected static function getCustomFieldSetSql(): string
     {
-        return <<<'SQL'
-            INSERT INTO `custom_field_set` (`id`, `name`, `config`, `active`, `app_id`, `position`, `global`, `created_at`, `updated_at`) VALUES
+        return <<<SQL
+            INSERT INTO `custom_field_set` (id, name, config, active, app_id, position, global, created_at, updated_at) VALUES
             (:id, :name, :config, 1, NULL, :position, 0, :created_at, NULL);
             SQL;
     }
 
     public static function getCustomFieldSql(): string
     {
-        return <<<'SQL'
+        return <<<SQL
                 INSERT INTO `custom_field` (`id`, `name`, `type`, `config`, `active`, `set_id`, `created_at`, `updated_at`, `allow_customer_write`) VALUES
                 (:id, :name, :fieldType, :config, 1, :set_id, :created_at, NULL, 1);
             SQL;
@@ -128,7 +130,7 @@ final class Migration1693936500CustomFieldProductTabs extends MigrationStep
 
     public static function getCustomFieldRelationSql(): string
     {
-        return <<<'SQL'
+        return <<<SQL
                 INSERT INTO `custom_field_set_relation` (`id`, `set_id`, `entity_name`, `created_at`, `updated_at`) VALUES
                 (:id, :set_id, :entity_name, :created_at, NULL);
             SQL;
