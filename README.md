@@ -122,20 +122,20 @@ bin/console plugin:install --activate SschreierTabProductDetailPage
 
 ### default description tab
 
-![default description tab](https://www.sebastianschreier.de/plugins/SschreierTabProductDetailPage/SschreierTabProductDetailPage-Image1.jpg)
+![default description tab](https://www.web-solutions-dresden.de/plugins/SschreierTabProductDetailPage/SschreierTabProductDetailPage-Image1.jpg)
 
 ### custom tab headline and content via product custom field
 
-![custom tab headline and content via product custom field](https://www.sebastianschreier.de/plugins/SschreierTabProductDetailPage/SschreierTabProductDetailPage-Image2.jpg)
+![custom tab headline and content via product custom field](https://www.web-solutions-dresden.de/plugins/SschreierTabProductDetailPage/SschreierTabProductDetailPage-Image2.jpg)
 
 ### extension configuration part 1
 
-![extension configuration](https://www.sebastianschreier.de/plugins/SschreierTabProductDetailPage/SschreierTabProductDetailPage-Image3.jpg)
+![extension configuration](https://www.web-solutions-dresden.de/plugins/SschreierTabProductDetailPage/SschreierTabProductDetailPage-Image3.jpg)
 
 ### extension configuration part 2
 
-![extension configuration](https://www.sebastianschreier.de/plugins/SschreierTabProductDetailPage/SschreierTabProductDetailPage-Image5.jpg)
+![extension configuration](https://www.web-solutions-dresden.de/plugins/SschreierTabProductDetailPage/SschreierTabProductDetailPage-Image5.jpg)
 
 ### custom tab headline and content in shopware administration
 
-![custom tab headline and content in shopware administration](https://www.sebastianschreier.de/plugins/SschreierTabProductDetailPage/SschreierTabProductDetailPage-Image4.jpg)
+![custom tab headline and content in shopware administration](https://www.web-solutions-dresden.de/plugins/SschreierTabProductDetailPage/SschreierTabProductDetailPage-Image4.jpg)

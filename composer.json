@@ -1,7 +1,7 @@
 {
     "name": "sschreier/sschreiertabproductdetailpage",
     "description": "tabs for the product detail page",
-    "version": "1.3.0",
+    "version": "1.3.1",
     "type": "shopware-platform-plugin",
     "license": "GPL-3.0-or-later",
     "authors": [
@@ -27,12 +27,12 @@
             "en-GB": "The extension provide tabs for the product detail page, which can be displayed before or after the reviews tab. The content of the tabs comes either from the rich text editor at the product or from a snippet. The tabs are also displayed when assigning a product page layout."
         },
         "manufacturerLink": {
-            "de-DE": "https://www.sebastianschreier.de",
-            "en-GB": "https://www.sebastianschreier.de"
+            "de-DE": "https://www.web-solutions-dresden.de",
+            "en-GB": "https://www.web-solutions-dresden.de"
         },
         "supportLink": {
-            "de-DE": "https://www.sebastianschreier.de",
-            "en-GB": "https://www.sebastianschreier.de"
+            "de-DE": "https://www.web-solutions-dresden.de",
+            "en-GB": "https://www.web-solutions-dresden.de"
         }
     },
     "autoload": {
