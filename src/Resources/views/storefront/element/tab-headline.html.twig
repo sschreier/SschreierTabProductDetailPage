@@ -6,123 +6,29 @@
         href="{{ customTabHref }}"
         role="tab"
         aria-controls="{{ customTabContent }}"
-        aria-selected="true">
+        aria-selected="false">
         <span class="product-detail-tab-navigation-text">
             {% block page_product_detail_tabs_navigation_review_custom_tab_headline %}
-                {% if fillTabViaSnippet %}
-                    {% if (numberTabs == 1) %}
-                        {% set tab1Headline = "sschreier.tabproductdetailpage.tabHeadlineFillViaSnippet"|trans %}
+                {% if not fillTabViaSnippet and customFields[customTabHeadlineValue] %}
+                    {% set tabHeadline = customFields[customTabHeadlineValue] %}
 
-                        {% if useTwigInTabHeadline %}
-                            {% include(template_from_string(tab1Headline)) %} 
-                        {% else %}
-                            {{ tab1Headline }}
-                        {% endif %}
-                    {% elseif (numberTabs == 2) %}
-                        {% set tab2Headline = "sschreier.tabproductdetailpage.tab2HeadlineFillViaSnippet"|trans %}
-
-                        {% if useTwigInTabHeadline %}
-                            {% include(template_from_string(tab2Headline)) %} 
-                        {% else %}
-                            {{ tab2Headline }}
-                        {% endif %}
-                    {% elseif (numberTabs == 3) %}
-                        {% set tab3Headline = "sschreier.tabproductdetailpage.tab3HeadlineFillViaSnippet"|trans %}
-
-                        {% if useTwigInTabHeadline %}
-                            {% include(template_from_string(tab3Headline)) %} 
-                        {% else %}
-                            {{ tab3Headline }}
-                        {% endif %}
-                    {% elseif (numberTabs == 4) %}
-                        {% set tab4Headline = "sschreier.tabproductdetailpage.tab4HeadlineFillViaSnippet"|trans %}
-
-                        {% if useTwigInTabHeadline %}
-                            {% include(template_from_string(tab4Headline)) %} 
-                        {% else %}
-                            {{ tab4Headline }}
-                        {% endif %}
-                    {% elseif (numberTabs == 5) %}
-                        {% set tab5Headline = "sschreier.tabproductdetailpage.tab5HeadlineFillViaSnippet"|trans %}
-
-                        {% if useTwigInTabHeadline %}
-                            {% include(template_from_string(tab5Headline)) %} 
-                        {% else %}
-                            {{ tab5Headline }}
-                        {% endif %}
-                    {% else %}
-                        {% block page_product_detail_tabs_navigation_review_custom_tab_headline_default %}
-                            {% set tab1Headline = "sschreier.tabproductdetailpage.tabHeadlineFillViaSnippet"|trans %}
-
-                            {% if useTwigInTabHeadline %}
-                                {% include(template_from_string(tab1Headline)) %} 
-                            {% else %}
-                                {{ tab1Headline }}
-                            {% endif %}
-                        {% endblock %}
+                    {% if useTwigInTabHeadline %}
+                        {% set tabHeadline = include(template_from_string(tabHeadline)) %}
                     {% endif %}
-                {% elseif fillTabViaSnippet == false %}
-                    {% if customFields[customTabHeadlineValue] %}
-                        {% set tabHeadline = customFields[customTabHeadlineValue] %}
+
+                    {{ "sschreier.tabproductdetailpage.tabHeadline"|trans({"%tabheadline%": tabHeadline}) }}
+                {% else %}
+                    {% block page_product_detail_tabs_navigation_review_custom_tab_headline_default %}
+                        {% set tabNumberSuffix = numberTabs > 1 and numberTabs <= 5 ? numberTabs : '' %}
+                        {% set tabHeadlineKey = 'tab' ~ tabNumberSuffix ~ 'HeadlineFillViaSnippet' %}
+                        {% set tabHeadline = ('sschreier.tabproductdetailpage.' ~ tabHeadlineKey)|trans %}
 
                         {% if useTwigInTabHeadline %}
-                            {% set tabHeadline = include(template_from_string(tabHeadline)) %}
-                        {% endif %}
-
-                        {{ "sschreier.tabproductdetailpage.tabHeadline"|trans({"%tabheadline%": tabHeadline}) }}
-                    {% else %}
-                        {% if (numberTabs == 1) %}
-                            {% set tab1Headline = "sschreier.tabproductdetailpage.tabHeadlineFillViaSnippet"|trans %}
-
-                            {% if useTwigInTabHeadline %}
-                                {% include(template_from_string(tab1Headline)) %} 
-                            {% else %}
-                                {{ tab1Headline }}
-                            {% endif %}
-                        {% elseif (numberTabs == 2) %}
-                            {% set tab2Headline = "sschreier.tabproductdetailpage.tab2HeadlineFillViaSnippet"|trans %}
-
-                            {% if useTwigInTabHeadline %}
-                                {% include(template_from_string(tab2Headline)) %} 
-                            {% else %}
-                                {{ tab2Headline }}
-                            {% endif %}
-                        {% elseif (numberTabs == 3) %}
-                            {% set tab3Headline = "sschreier.tabproductdetailpage.tab3HeadlineFillViaSnippet"|trans %}
-
-                            {% if useTwigInTabHeadline %}
-                                {% include(template_from_string(tab3Headline)) %} 
-                            {% else %}
-                                {{ tab3Headline }}
-                            {% endif %}
-                        {% elseif (numberTabs == 4) %}
-                            {% set tab4Headline = "sschreier.tabproductdetailpage.tab4HeadlineFillViaSnippet"|trans %}
-
-                            {% if useTwigInTabHeadline %}
-                                {% include(template_from_string(tab4Headline)) %} 
-                            {% else %}
-                                {{ tab4Headline }}
-                            {% endif %}
-                        {% elseif (numberTabs == 5) %}
-                            {% set tab5Headline = "sschreier.tabproductdetailpage.tab5HeadlineFillViaSnippet"|trans %}
-
-                            {% if useTwigInTabHeadline %}
-                                {% include(template_from_string(tab5Headline)) %} 
-                            {% else %}
-                                {{ tab5Headline }}
-                            {% endif %}
+                            {% include(template_from_string(tabHeadline)) %}
                         {% else %}
-                            {% block page_product_detail_tabs_navigation_review_custom_tab_headline_customFields_default %}
-                                {% set tab1Headline = "sschreier.tabproductdetailpage.tabHeadlineFillViaSnippet"|trans %}
-
-                                {% if useTwigInTabHeadline %}
-                                    {% include(template_from_string(tab1Headline)) %} 
-                                {% else %}
-                                    {{ tab1Headline }}
-                                {% endif %}
-                            {% endblock %}
+                            {{ tabHeadline }}
                         {% endif %}
-                    {% endif %}
+                    {% endblock %}
                 {% endif %}
             {% endblock %}
         </span>
@@ -131,32 +37,26 @@
         </span>
         <span class="product-detail-tab-preview">
             {% block page_product_detail_tabs_navigation_review_custom_tab_content_preview %}
+                {% set tabPreviewLength = config('SschreierTabProductDetailPage.config.TruncateTabPreviewText')|default(125) %}
+
                 {% if fillTabViaSnippet %}
-                    {% if (numberTabs == 1) %}
-                        {% set tabContentPreview = "sschreier.tabproductdetailpage.tabContentFillViaSnippet"|trans|raw %}
-                    {% elseif (numberTabs == 2) %}
-                        {% set tabContentPreview = "sschreier.tabproductdetailpage.tab2ContentFillViaSnippet"|trans|raw %}
-                    {% elseif (numberTabs == 3) %}
-                        {% set tabContentPreview = "sschreier.tabproductdetailpage.tab3ContentFillViaSnippet"|trans|raw %}
-                    {% elseif (numberTabs == 4) %}
-                        {% set tabContentPreview = "sschreier.tabproductdetailpage.tab4ContentFillViaSnippet"|trans|raw %}
-                    {% elseif (numberTabs == 5) %}
-                        {% set tabContentPreview = "sschreier.tabproductdetailpage.tab5ContentFillViaSnippet"|trans|raw %}
-                    {% else %}
-                        {% block page_product_detail_tabs_navigation_review_custom_tab_content_preview_default %}
-                            {% set tabContentPreview = "sschreier.tabproductdetailpage.tabContentFillViaSnippet"|trans|raw %}
-                        {% endblock %}
-                    {% endif %}
+                    {% block page_product_detail_tabs_navigation_review_custom_tab_content_preview_default %}
+                        {% set tabNumberSuffix = numberTabs > 1 and numberTabs <= 5 ? numberTabs : '' %}
+                        {% set tabContentPreviewKey = 'tab' ~ tabNumberSuffix ~ 'ContentFillViaSnippet' %}
+                        {% set tabContentPreview = ('sschreier.tabproductdetailpage.' ~ tabContentPreviewKey)|trans %}
 
-                    {% if useTwigInTabContent %}
-                        {% set tabContentPreview = include(template_from_string(tabContentPreview)) %} 
-                    {% endif %}
+                        {% if useTwigInTabContent %}
+                            {% set tabContentPreview = include(template_from_string(tabContentPreview)) %}
+                        {% endif %}
+                        {% set tabContentPreviewText = tabContentPreview|striptags|trim %}
+                        {% set tabContentPreviewText = tabContentPreview|striptags|trim %}
 
-                    {{ tabContentPreview|striptags|u.truncate(config('SschreierTabProductDetailPage.config.TruncateTabPreviewText'), '...') }}
+                        {{ tabContentPreviewText|u.truncate(tabPreviewLength, '...') }}
 
-                    {% if tabContentPreview|length >= ((config('SschreierTabProductDetailPage.config.TruncateTabPreviewText')) + 1) %}
-                        <span class="product-detail-tab-preview-more">{{ "sschreier.tabproductdetailpage.tabContentPreviewMore"|trans|sw_sanitize }}</span>
-                    {% endif %}
+                        {% if tabContentPreviewText|length > tabPreviewLength %}
+                            <span class="product-detail-tab-preview-more">{{ "sschreier.tabproductdetailpage.tabContentPreviewMore"|trans|sw_sanitize }}</span>
+                        {% endif %}
+                    {% endblock %}
                 {% elseif fillTabViaSnippet == false and customFields[customTabContentValue] %}
                     {% set tabContent = customFields[customTabContentValue] %}
 
@@ -164,9 +64,11 @@
                         {% set tabContent = include(template_from_string(tabContent)) %}
                     {% endif %}
 
-                    {{ "sschreier.tabproductdetailpage.tabContentPreviewText"|trans({"%tabcontentpreviewtext%": tabContent})|raw|striptags|sw_sanitize|u.truncate(config('SschreierTabProductDetailPage.config.TruncateTabPreviewText'), '...') }}
+                    {% set tabContentPreviewText = "sschreier.tabproductdetailpage.tabContentPreviewText"|trans({"%tabcontentpreviewtext%": tabContent})|striptags|trim %}
 
-                    {% if customFields[customTabContentValue]|length >= ((config('SschreierTabProductDetailPage.config.TruncateTabPreviewText')) + 1) %}
+                    {{ tabContentPreviewText|u.truncate(tabPreviewLength, '...') }}
+
+                    {% if tabContentPreviewText|length > tabPreviewLength %}
                         <span class="product-detail-tab-preview-more">{{ "sschreier.tabproductdetailpage.tabContentPreviewMore"|trans|sw_sanitize }}</span>
                     {% endif %}
                 {% endif %}

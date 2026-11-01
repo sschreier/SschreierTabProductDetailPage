@@ -5,58 +5,18 @@
         <div class="custom-tab-pane-text">
             {% block page_product_detail_tabs_navigation_review_custom_tab_content %}
                 {% if fillTabViaSnippet %}
-                    {% if (numberTabs == 1) %}
-                        {% set tab1Content = "sschreier.tabproductdetailpage.tabContentFillViaSnippet"|trans|raw %}
+                    {% block page_product_detail_tabs_navigation_review_custom_tab_content_default %}
+                        {% set tabNumberSuffix = numberTabs > 1 and numberTabs <= 5 ? numberTabs : '' %}
+                        {% set tabContentKey = 'tab' ~ tabNumberSuffix ~ 'ContentFillViaSnippet' %}
+                        {% set tabContent = ('sschreier.tabproductdetailpage.' ~ tabContentKey)|trans|raw %}
 
                         {% if useTwigInTabContent %}
-                            {% include(template_from_string(tab1Content)) %} 
+                            {% include(template_from_string(tabContent)) %}
                         {% else %}
-                            {{ tab1Content }}
+                            {{ tabContent }}
                         {% endif %}
-                    {% elseif (numberTabs == 2) %}
-                        {% set tab2Content = "sschreier.tabproductdetailpage.tab2ContentFillViaSnippet"|trans|raw %}
-
-                        {% if useTwigInTabContent %}
-                            {% include(template_from_string(tab2Content)) %} 
-                        {% else %}
-                            {{ tab2Content }}
-                        {% endif %}
-                    {% elseif (numberTabs == 3) %}
-                        {% set tab3Content = "sschreier.tabproductdetailpage.tab3ContentFillViaSnippet"|trans|raw %}
-                        
-                        {% if useTwigInTabContent %}
-                            {% include(template_from_string(tab3Content)) %} 
-                        {% else %}
-                            {{ tab3Content }}
-                        {% endif %}
-                    {% elseif (numberTabs == 4) %}
-                        {% set tab4Content = "sschreier.tabproductdetailpage.tab4ContentFillViaSnippet"|trans|raw %}
-                        
-                        {% if useTwigInTabContent %}
-                            {% include(template_from_string(tab4Content)) %} 
-                        {% else %}
-                            {{ tab4Content }}
-                        {% endif %}
-                    {% elseif (numberTabs == 5) %}
-                        {% set tab5Content = "sschreier.tabproductdetailpage.tab5ContentFillViaSnippet"|trans|raw %}
-
-                        {% if useTwigInTabContent %}
-                            {% include(template_from_string(tab5Content)) %} 
-                        {% else %}
-                            {{ tab5Content }}
-                        {% endif %}
-                    {% else %}
-                        {% block page_product_detail_tabs_navigation_review_custom_tab_content_default %}
-                            {% set tab1Content = "sschreier.tabproductdetailpage.tabContentFillViaSnippet"|trans|raw %}
-
-                            {% if useTwigInTabContent %}
-                                {% include(template_from_string(tab1Content)) %} 
-                            {% else %}
-                                {{ tab1Content }}
-                            {% endif %}
-                        {% endblock %}
-                    {% endif %}
-                {%  elseif fillTabViaSnippet == false and customFields[customTabContentValue] %}
+                    {% endblock %}
+                {% elseif fillTabViaSnippet == false and customFields[customTabContentValue] %}
                     {% set tabContent = customFields[customTabContentValue] %}
 
                     {% if useTwigInTabContent %}

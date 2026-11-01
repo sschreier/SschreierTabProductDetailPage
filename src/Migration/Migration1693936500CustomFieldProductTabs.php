@@ -9,10 +9,11 @@ declare(strict_types=1);
 
 namespace Sschreier\TabProductDetailPage\Migration;
 
+use DateTimeImmutable;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Exception;
+use Shopware\Core\Content\Product\ProductDefinition;
 use Shopware\Core\Defaults;
-use Shopware\Core\Framework\Migration\InheritanceUpdaterTrait;
 use Shopware\Core\Framework\Migration\MigrationStep;
 use Shopware\Core\Framework\Uuid\Uuid;
 use Shopware\Core\System\CustomField\CustomFieldTypes;
@@ -20,10 +21,6 @@ use Sschreier\TabProductDetailPage\SschreierTabProductDetailPage;
 
 final class Migration1693936500CustomFieldProductTabs extends MigrationStep
 {
-    use InheritanceUpdaterTrait;
-
-    public const CUSTOM_FIELD_SET_TECHNICAL_NAME = 'sschreier_tabs_';
-
     public function getCreationTimestamp(): int
     {
         return 1693936500;
@@ -44,10 +41,6 @@ final class Migration1693936500CustomFieldProductTabs extends MigrationStep
         }
     }
 
-    public function updateDestructive(Connection $connection): void
-    {
-    }
-
     protected function createCustomFieldSet(Connection $connection, int $number): string
     {
         $customFieldSetId = Uuid::randomBytes();
@@ -56,8 +49,14 @@ final class Migration1693936500CustomFieldProductTabs extends MigrationStep
             self::getCustomFieldSetSql(),
             [
                 'id' => $customFieldSetId,
-                'name' => self::CUSTOM_FIELD_SET_TECHNICAL_NAME . $number,
-                'config' => '{"label": {"de-DE": "Tab ' . $number .'", "en-GB": "tab ' . $number .'"}, "translated": true}',
+                'name' => SschreierTabProductDetailPage::CUSTOM_FIELD_SET_TECHNICAL_NAME . $number,
+                'config' => json_encode([
+                    'label' => [
+                        'de-DE' => 'Tab ' . $number,
+                        'en-GB' => 'tab ' . $number,
+                    ],
+                    'translated' => true,
+                ], JSON_THROW_ON_ERROR),
                 'position' => $number,
                 'created_at' => self::getDateTimeValue(),
             ]
@@ -74,9 +73,22 @@ final class Migration1693936500CustomFieldProductTabs extends MigrationStep
             self::getCustomFieldSql(),
             [
                 'id' => $customFieldId,
-                'name' => self::CUSTOM_FIELD_SET_TECHNICAL_NAME . 'tab' . $number . '_headline',
+                'name' => SschreierTabProductDetailPage::CUSTOM_FIELD_SET_TECHNICAL_NAME . 'tab' . $number . '_headline',
                 'fieldType' => CustomFieldTypes::TEXT,
-                'config' => '{"label": {"de-DE": "Überschrift", "en-GB": "headline"}, "placeholder": {"de-DE": "Überschrift des Tabs", "en-GB": "headline of the tab"}, "componentName": "sw-field", "customFieldType": "text", "customFieldPosition": 1, "type": "text"}',
+                'config' => json_encode([
+                    'label' => [
+                        'de-DE' => 'Überschrift',
+                        'en-GB' => 'headline',
+                    ],
+                    'placeholder' => [
+                        'de-DE' => 'Überschrift des Tabs',
+                        'en-GB' => 'headline of the tab',
+                    ],
+                    'componentName' => 'sw-field',
+                    'customFieldType' => 'text',
+                    'customFieldPosition' => 1,
+                    'type' => 'text',
+                ], JSON_THROW_ON_ERROR),
                 'set_id' => $customFieldSetId,
                 'created_at' => self::getDateTimeValue(),
             ],
@@ -88,16 +100,24 @@ final class Migration1693936500CustomFieldProductTabs extends MigrationStep
             self::getCustomFieldSql(),
             [
                 'id' => $customFieldId,
-                'name' => self::CUSTOM_FIELD_SET_TECHNICAL_NAME . 'tab' . $number . '_content',
+                'name' => SschreierTabProductDetailPage::CUSTOM_FIELD_SET_TECHNICAL_NAME . 'tab' . $number . '_content',
                 'fieldType' => CustomFieldTypes::HTML,
-                'config' => '{"label": {"de-DE": "Inhalt", "en-GB": "content"}, "componentName": "sw-text-editor", "customFieldType": "textEditor", "customFieldPosition": 2}',
+                'config' => json_encode([
+                    'label' => [
+                        'de-DE' => 'Inhalt',
+                        'en-GB' => 'content',
+                    ],
+                    'componentName' => 'sw-text-editor',
+                    'customFieldType' => 'textEditor',
+                    'customFieldPosition' => 2,
+                ], JSON_THROW_ON_ERROR),
                 'set_id' => $customFieldSetId,
                 'created_at' => self::getDateTimeValue(),
             ],
         );
     }
 
-    protected function createCustomFieldRelation(Connection $connection, $customFieldSetId): void
+    protected function createCustomFieldRelation(Connection $connection, string $customFieldSetId): void
     {
         $customFieldRelationId = Uuid::randomBytes();
 
@@ -107,7 +127,7 @@ final class Migration1693936500CustomFieldProductTabs extends MigrationStep
                 'id' => $customFieldRelationId,
                 'set_id' => $customFieldSetId,
                 'created_at' => self::getDateTimeValue(),
-                'entity_name' => 'product'
+                'entity_name' => ProductDefinition::ENTITY_NAME,
             ],
         );
     }
@@ -124,7 +144,7 @@ final class Migration1693936500CustomFieldProductTabs extends MigrationStep
     {
         return <<<SQL
                 INSERT INTO `custom_field` (`id`, `name`, `type`, `config`, `active`, `set_id`, `created_at`, `updated_at`, `allow_customer_write`) VALUES
-                (:id, :name, :fieldType, :config, 1, :set_id, :created_at, NULL, 1);
+                (:id, :name, :fieldType, :config, 1, :set_id, :created_at, NULL, 0);
             SQL;
     }
 
@@ -138,6 +158,6 @@ final class Migration1693936500CustomFieldProductTabs extends MigrationStep
 
     protected static function getDateTimeValue(): string
     {
-        return (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT);
+        return (new DateTimeImmutable())->format(Defaults::STORAGE_DATE_TIME_FORMAT);
     }
 }
