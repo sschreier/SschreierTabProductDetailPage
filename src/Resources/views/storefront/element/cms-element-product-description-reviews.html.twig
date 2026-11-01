@@ -21,9 +21,15 @@
 
         {% block element_product_description_reviews_tabs_navigation_review_inner %}
             {% set tabNumberSuffix = (numberTabs > 1 and numberTabs <= 5) ? numberTabs : '' %}
-            {% set fillTabViaSnippet = config('SschreierTabProductDetailPage.config.FillTab' ~ tabNumberSuffix ~ 'ViaSnippet') ?? config('SschreierTabProductDetailPage.config.FillTabViaSnippet') %}
-            {% set useTwigInTabHeadline = config('SschreierTabProductDetailPage.config.UseTwigInTab' ~ tabNumberSuffix ~ 'Headline') ?? config('SschreierTabProductDetailPage.config.UseTwigInTabHeadline') %}
-            {% set useTwigInTabContent = config('SschreierTabProductDetailPage.config.UseTwigInTab' ~ tabNumberSuffix ~ 'Content') ?? config('SschreierTabProductDetailPage.config.UseTwigInTabContent') %}
+            {% if numberTabs <= 5 %}
+                {% set fillTabViaSnippet = config('SschreierTabProductDetailPage.config.FillTab' ~ tabNumberSuffix ~ 'ViaSnippet') %}
+                {% set useTwigInTabHeadline = config('SschreierTabProductDetailPage.config.UseTwigInTab' ~ tabNumberSuffix ~ 'Headline') %}
+                {% set useTwigInTabContent = config('SschreierTabProductDetailPage.config.UseTwigInTab' ~ tabNumberSuffix ~ 'Content') %}
+            {% else %}
+                {% set fillTabViaSnippet = config('SschreierTabProductDetailPage.config.FillTabViaSnippet') %}
+                {% set useTwigInTabHeadline = config('SschreierTabProductDetailPage.config.UseTwigInTabHeadline') %}
+                {% set useTwigInTabContent = config('SschreierTabProductDetailPage.config.UseTwigInTabContent') %}
+            {% endif %}
 
             {% if fillTabViaSnippet or customFields[customTabContentValue] %}
                 {% sw_include '@SschreierTabProductDetailPage/storefront/element/tab-headline.html.twig' with {
@@ -61,8 +67,13 @@
 
         {% block element_product_description_reviews_tabs_content_review_inner %}
             {% set tabNumberSuffix = (numberTabs > 1 and numberTabs <= 5) ? numberTabs : '' %}
-            {% set fillTabViaSnippet = config('SschreierTabProductDetailPage.config.FillTab' ~ tabNumberSuffix ~ 'ViaSnippet') ?? config('SschreierTabProductDetailPage.config.FillTabViaSnippet') %}
-            {% set useTwigInTabContent = config('SschreierTabProductDetailPage.config.UseTwigInTab' ~ tabNumberSuffix ~ 'Content') ?? config('SschreierTabProductDetailPage.config.UseTwigInTabContent') %}
+            {% if numberTabs <= 5 %}
+                {% set fillTabViaSnippet = config('SschreierTabProductDetailPage.config.FillTab' ~ tabNumberSuffix ~ 'ViaSnippet') %}
+                {% set useTwigInTabContent = config('SschreierTabProductDetailPage.config.UseTwigInTab' ~ tabNumberSuffix ~ 'Content') %}
+            {% else %}
+                {% set fillTabViaSnippet = config('SschreierTabProductDetailPage.config.FillTabViaSnippet') %}
+                {% set useTwigInTabContent = config('SschreierTabProductDetailPage.config.UseTwigInTabContent') %}
+            {% endif %}
 
             {% if fillTabViaSnippet or customFields[customTabContentValue] %}
                 <div class="tab-pane fade show"
